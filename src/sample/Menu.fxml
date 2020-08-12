@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
+   <children>
+      <Button fx:id="addBitzenButton" mnemonicParsing="false" onAction="#addBitzenButtonClicked" text="Add Bitzen" />
+      <Button fx:id="deleteBitzenButton" mnemonicParsing="false" onAction="#deleteBitzenButtonClicked" text="Delete Bitzen" />
+      <Button fx:id="wipeBitzensButton" mnemonicParsing="false" onAction="#wipeBitzensButtonClicked" text="Wipe Bitzens" />
+      <Button fx:id="addFloorButton" mnemonicParsing="false" onAction="#addFloorButtonClicked" text="Add Floor" />
+      <Button fx:id="deleteFloorButton" mnemonicParsing="false" onAction="#deleteFloorButtonClicked" text="Delete Floor" />
+      <Button fx:id="wipeFloorsButton" mnemonicParsing="false" onAction="#wipeFloorsButtonClicked" text="Wipe Floors" />
+   </children>
+</VBox>
