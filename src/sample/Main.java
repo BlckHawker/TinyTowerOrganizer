@@ -8,28 +8,45 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+
 public class Main extends Application
 {
-    public static enum Food
-    {
-        Airline_Food,
-        Asian_Cuisine,
-        Bakery,
-        BBQ_Place,
-        Burrito_Bar,
-        Cheese_Shop,
-        Coffee_House,
-        Diner,
-        Donut_Shop,
-        Fancy_Cuisine,
+    static Stage window;
 
-        };
+    static ArrayList <Bitizen> bitizens;
+    static ArrayList <ResidentFloor> residentFloors;
+    static ArrayList <JobFloor> jobFloors;
+    static int floorNum = 1;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        bitizens = new ArrayList<>();
+        residentFloors = new ArrayList<>();
+        jobFloors = new ArrayList<>();
+        window = primaryStage;
+        window.setScene(MenuScene.getMenu());
+        window.show();
+    }
+
+    //finds the index of the elements that has the targeted floorName for resident floors
+    public static int findResidentFloorName(ResidentFloor.FloorName floorName)
+    {
+        for(int i = 0; i < residentFloors.size(); i++)
+            if(residentFloors.get(i).floorName == floorName)
+                return i;
+
+        return -1;
+    }
+
+    //finds the index of the elements that has the targeted floorName for resident floors
+    public static int findJobFloorName(JobFloor.FloorName floorName)
+    {
+        for(int i = 0; i < jobFloors.size(); i++)
+            if(jobFloors.get(i).floorName == floorName)
+                return i;
+
+        return -1;
     }
 
 
