@@ -10,7 +10,6 @@ public class ResidentFloor {
 
     public enum FloorName
     {
-
         ANTI_GRAV,
         AQUATIC,
         ARTIC,
@@ -108,9 +107,10 @@ public class ResidentFloor {
         }
 
 
-    public ResidentFloor(String name)
+    public ResidentFloor(FloorName floorName)
     {
-
+        this.floorName = floorName;
+        residentsNum = 0;
     }
 
 

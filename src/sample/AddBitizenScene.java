@@ -117,15 +117,27 @@ public class AddBitizenScene {
                 Alert.display("No name", "The bitizen must have a name");
             }
 
+            //can't have duplicate name
+
+            for(int i = 0; i < Main.bitizens.size(); i++)
+            {
+                if (Main.bitizens.get(i).name.equals(nameTextField.getText()))
+                {
+                    flag = false;
+                    Alert.display("Duplicate Name", "There is already a bitizen named " + nameTextField.getText());
+                    break;
+                }
+            }
+
             //if there is room to add a bitizen
-            if(Main.bitizens.size() >= Main.residentFloors.size() * 5)
+            if(flag && Main.bitizens.size() >= Main.residentFloors.size() * 5)
             {
                 flag = false;
                 Alert.display("No room", "There's no room to add another bitizen");
             }
 
             //if there is any space on that floor
-            if(Main.residentFloors.get(Main.findResidentFloorName(residentFloorNameChoiceBox.getValue())).residentsNum >= 5)
+            if(flag && Main.residentFloors.get(Main.findResidentFloorName(residentFloorNameChoiceBox.getValue())).residentsNum >= 5)
             {
                 flag = false;
                 Alert.display("No room", "There's no room to add another bitizen on this floor");
@@ -143,7 +155,7 @@ public class AddBitizenScene {
 
         backButton = new Button("Back");
 
-        backButton.setOnAction(e -> MenuScene.getMenu());
+        backButton.setOnAction(e -> Main.window.setScene(MenuScene.getMenu()));
 
         menu.getChildren().addAll(nameTextField,residentFloorNameChoiceBox,addButton,backButton);
 

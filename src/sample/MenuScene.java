@@ -25,7 +25,7 @@ public class MenuScene {
         deleteResidentFloor = new Button("Delete Resident Floor"); //deletes a resident floor
         wipeFloorsButton = new Button("Wipe Floors"); //get rids of all floors from the game (can't have any bitizens in the game)
         updateEmployment = new Button("Update Employment"); //sorts the bitizens employment
-        showTowerButton = new Button(); //show a list of the tower floors
+        showTowerButton = new Button("Show Tower"); //show a list of the tower floors
 
 
         addBitizenButton.setOnAction(e ->
@@ -44,14 +44,14 @@ public class MenuScene {
 
         addResidentFloorButton.setOnAction(e ->
         {
-            
+            Main.window.setScene(AddResidentFloorScene.AddResidentFloorScene());
         });
 
         menu = new VBox(10);
 
         menu.setAlignment(Pos.CENTER);
 
-        menu.getChildren().addAll(addBitizenButton, deleteBitizenButton, wipeBitizensButton, addResidentFloorButton, addJobFloorButton, deleteJobFloorButton, deleteResidentFloor, wipeFloorsButton, updateEmployment);
+        menu.getChildren().addAll(addBitizenButton, deleteBitizenButton, wipeBitizensButton, addResidentFloorButton, addJobFloorButton, deleteJobFloorButton, deleteResidentFloor, wipeFloorsButton, updateEmployment, showTowerButton);
 
         return new Scene(menu);
     }
