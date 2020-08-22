@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MenuScene {
     static VBox menu;
-    static Button addBitizenButton, deleteBitizenButton, wipeBitizensButton, addJobFloorButton, addResidentFloorButton, deleteJobFloorButton, deleteResidentFloor, wipeFloorsButton, updateEmployment, showTowerButton;
+    static Button addBitizenButton, deleteBitizenButton, wipeBitizensButton, addJobFloorButton, addResidentFloorButton, deleteJobFloorButton, deleteResidentFloor, wipeFloorsButton, updateEmployment, showTowerButton, fireAllBitizensButton, showBitizenButton;
 
 
     public static Scene getMenu()
@@ -26,6 +26,8 @@ public class MenuScene {
         wipeFloorsButton = new Button("Wipe Floors"); //get rids of all floors from the game (can't have any bitizens in the game)
         updateEmployment = new Button("Update Employment"); //sorts the bitizens employment
         showTowerButton = new Button("Show Tower"); //show a list of the tower floors
+        fireAllBitizensButton = new Button("Fire All Bitizens"); //Makes all bitizens unemployed
+        showBitizenButton = new Button("Show Bitizens"); //shows a Bitizen's name, stats, employment, and residents based on a choiceBox
 
 
         addBitizenButton.setOnAction(e ->
@@ -47,11 +49,22 @@ public class MenuScene {
             Main.window.setScene(AddResidentFloorScene.AddResidentFloorScene());
         });
 
+        showTowerButton.setOnAction(e ->
+        {
+            System.out.println("Show Tower Button Clicked");
+
+            if(Main.residentFloors.isEmpty() && Main.jobFloors.isEmpty())
+                Alert.display("No floors", "There are no floors to show");
+
+            else
+               Main.window.setScene(ShowTowerScene.getShowTowerScene());
+        });
+
         menu = new VBox(10);
 
         menu.setAlignment(Pos.CENTER);
 
-        menu.getChildren().addAll(addBitizenButton, deleteBitizenButton, wipeBitizensButton, addResidentFloorButton, addJobFloorButton, deleteJobFloorButton, deleteResidentFloor, wipeFloorsButton, updateEmployment, showTowerButton);
+        menu.getChildren().addAll(addResidentFloorButton, deleteResidentFloor, addJobFloorButton, deleteJobFloorButton, wipeFloorsButton, addBitizenButton, deleteBitizenButton, wipeBitizensButton, updateEmployment, fireAllBitizensButton, showTowerButton, showBitizenButton);
 
         return new Scene(menu);
     }

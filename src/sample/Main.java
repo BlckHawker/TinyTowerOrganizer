@@ -16,7 +16,6 @@ public class Main extends Application
     static ArrayList <Bitizen> bitizens;
     static ArrayList <ResidentFloor> residentFloors;
     static ArrayList <JobFloor> jobFloors;
-    static int floorNum = 1;
 
 
     @Override
