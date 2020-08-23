@@ -16,7 +16,7 @@ public class MenuScene {
 
     public static Scene getMenu()
     {
-        addBitizenButton = new Button("Add Bitzen"); //Add a bitizen to the game
+        addBitizenButton = new Button("Add Bitizen"); //Add a bitizen to the game
         deleteBitizenButton = new Button("Delete Bitizen"); //deletes a bitizen from the game
         wipeBitizensButton = new Button("Wipe Bitizens"); //deletes all bitizens from the game
         addJobFloorButton = new Button("Add Job Floor"); //add a job floor to the game
@@ -32,22 +32,15 @@ public class MenuScene {
 
         addBitizenButton.setOnAction(e ->
         {
-            boolean flag = true;
-
             if(Main.bitizens.size() == Main.residentFloors.size() * 5)
-            {
                 Alert.display("No space", "There is no space to add a Bitizen");
-                flag = false;
-            }
-
-            if(flag)
+            else
                 Main.window.setScene(AddBitizenScene.getAddBitizenScene());
         });
 
-        addResidentFloorButton.setOnAction(e ->
-        {
-            Main.window.setScene(AddResidentFloorScene.AddResidentFloorScene());
-        });
+        addResidentFloorButton.setOnAction(e -> Main.window.setScene(AddResidentFloorScene.AddResidentFloorScene()));
+
+        addJobFloorButton.setOnAction(event -> Main.window.setScene(AddJobFloorScene.getAddAddJobFloorScene()));
 
         showTowerButton.setOnAction(e ->
         {

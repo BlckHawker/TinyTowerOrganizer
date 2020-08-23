@@ -11,19 +11,19 @@ import java.util.ArrayList;
 public class ShowTowerScene {
     static Button backButton;
     static Label label;
-    static String str = "";
+    static String str;
     static VBox menu;
     public static Scene getShowTowerScene() {
         backButton = new Button("Back");
 
         backButton.setOnAction(event -> Main.window.setScene(MenuScene.getMenu()));
 
-
-
         sortResidentFloors();
         sortAllJobFloors();
 
         int floorNum = Main.residentFloors.size() + Main.jobFloors.size();
+
+        str = "";
 
         for (int i = 0; i < Main.residentFloors.size(); i++)
             str += (floorNum - i + 1) + ": " + Main.residentFloors.get(i).floorName + "\n";
@@ -33,8 +33,6 @@ public class ShowTowerScene {
             str += (floorNum + 1 - i - Main.residentFloors.size()) + ": " + Main.jobFloors.get(i).floorName + "\n";
 
         str += "1: Lobby";
-
-        System.out.println(str);
 
         label = new Label(str);
 
@@ -89,19 +87,13 @@ public class ShowTowerScene {
             }
         }
 
-        foodFloors = sortJobFloors(foodFloors);
-        retailFloors = sortJobFloors(retailFloors);
-        recreationFloors = sortJobFloors(recreationFloors);
-        creativeFloors = sortJobFloors(creativeFloors);
-        serviceFloors = sortJobFloors(serviceFloors);
-
         Main.jobFloors.clear();
 
-        Main.jobFloors.addAll(serviceFloors);
-        Main.jobFloors.addAll(creativeFloors);
-        Main.jobFloors.addAll(recreationFloors);
-        Main.jobFloors.addAll(retailFloors);
-        Main.jobFloors.addAll(foodFloors);
+        Main.jobFloors.addAll(sortJobFloors(serviceFloors));
+        Main.jobFloors.addAll(sortJobFloors(creativeFloors));
+        Main.jobFloors.addAll(sortJobFloors(recreationFloors));
+        Main.jobFloors.addAll(sortJobFloors(retailFloors));
+        Main.jobFloors.addAll(sortJobFloors(foodFloors));
 }
 
     public static ArrayList<JobFloor> sortJobFloors(ArrayList<JobFloor> list)
