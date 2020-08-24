@@ -42,6 +42,17 @@ public class MenuScene {
 
         addJobFloorButton.setOnAction(event -> Main.window.setScene(AddJobFloorScene.getAddAddJobFloorScene()));
 
+        fireAllBitizensButton.setOnAction(event ->
+        {
+            for(int i = 0; i < Main.bitizens.size(); i++)
+                Main.bitizens.get(i).job = JobFloor.FloorName.UNEMPLOYED;
+
+            for(int i = 0; i < Main.jobFloors.size(); i++)
+                Main.jobFloors.get(i).employeeNum = 0;
+
+            Alert.display("","All bitizens fired");
+        });
+
         showTowerButton.setOnAction(e ->
         {
             System.out.println("Show Tower Button Clicked");

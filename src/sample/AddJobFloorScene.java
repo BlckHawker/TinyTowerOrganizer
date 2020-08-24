@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -46,6 +47,8 @@ public class AddJobFloorScene {
         backButton.setOnAction(event -> Main.window.setScene(MenuScene.getMenu()));
 
         menu = new VBox(10);
+
+        menu.setAlignment(Pos.CENTER);
 
         menu.getChildren().addAll(jobFloorChoiceBox, addFloorButton, backButton);
 
