@@ -13,7 +13,8 @@ public class Bitizen {
     JobFloor.FloorName job; //the floor the bitizen works on
     JobFloor.FloorName dreamJob; //the dream job for the bitizen
     Skill food, retail, recreation, creative, service;
-    ArrayList <Skill> list; // a list of the skills from worst to best
+    ArrayList <Skill> list; // a list of the skills from best to worse
+    int skillSum;
 
     public Bitizen(String name, int foodNum, int retailNum, int recreationNum, int creativeNum, int serviceNum, ResidentFloor.FloorName apartment, JobFloor.FloorName dreamJob)
     {
@@ -32,6 +33,8 @@ public class Bitizen {
         this.apartment = apartment;
 
         job = JobFloor.FloorName.UNEMPLOYED;
+
+        skillSum = foodNum + retailNum + recreationNum + creativeNum + serviceNum;
     }
 
     public void changeJob(JobFloor.FloorName job)
@@ -51,7 +54,7 @@ public class Bitizen {
 
         for(int i = 0; i < list.size() - 1; i++)
             for(int j = i + 1; j < list.size(); j++)
-                if(list.get(i).num > list.get(j).num)
+                if(list.get(i).num < list.get(j).num)
                 {
                     Skill temp = list.get(i);
 

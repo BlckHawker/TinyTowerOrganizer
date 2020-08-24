@@ -5,12 +5,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import static sample.ResidentFloor.FloorName.*;
 
 public class AddResidentFloorScene {
+    static ScrollPane scrollPane;
     static VBox menu;
     static HBox residentHBox;
     static Label residentLabel;
@@ -20,6 +22,8 @@ public class AddResidentFloorScene {
 
     public static Scene AddResidentFloorScene()
     {
+        scrollPane = new ScrollPane();
+
         menu = new VBox(10);
 
         menu.setAlignment(Pos.CENTER);
@@ -60,8 +64,11 @@ public class AddResidentFloorScene {
 
         backButton.setOnAction(event -> Main.window.setScene(MenuScene.getMenu()));
 
+
         menu.getChildren().addAll(residentHBox, addButton, backButton);
 
-        return new Scene(menu);
+        scrollPane.setContent(menu);
+
+        return new Scene(scrollPane);
     }
 }

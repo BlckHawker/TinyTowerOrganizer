@@ -26,11 +26,27 @@ public class ShowTowerScene {
         str = "";
 
         for (int i = 0; i < Main.residentFloors.size(); i++)
+        {
             str += (floorNum - i + 1) + ": " + Main.residentFloors.get(i).floorName + "\n";
+
+            for(int j = 0; j < Main.bitizens.size(); j++)
+            {
+                if(Main.bitizens.get(j).apartment == Main.residentFloors.get(i).floorName)
+                str += "\t" + Main.bitizens.get(j).name + "\n";
+            }
+        }
 
 
         for(int i = 0; i < Main.jobFloors.size(); i++)
+        {
             str += (floorNum + 1 - i - Main.residentFloors.size()) + ": " + Main.jobFloors.get(i).floorName + "\n";
+
+            for(int j = 0; j < Main.bitizens.size(); j++)
+            {
+                if(Main.bitizens.get(j).job == Main.jobFloors.get(i).floorName)
+                    str += "\t" + Main.bitizens.get(j).name + "\n";
+            }
+        }
 
         str += "1: Lobby";
 

@@ -53,6 +53,12 @@ public class MenuScene {
                Main.window.setScene(ShowTowerScene.getShowTowerScene());
         });
 
+        updateEmployment.setOnAction(e ->
+        {
+            UpdateEmploymentScene.updateEmploymentScene();
+            Alert.display("","Employment updated");
+        });
+
         menu = new VBox(10);
 
         menu.setAlignment(Pos.CENTER);
